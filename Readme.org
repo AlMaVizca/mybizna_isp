@@ -1,0 +1,107 @@
+#+TITLE: mybizna_isp
+
+A system for auto-billing clients with ability to enable and disable on payment
+and expiry respectively. The system works by integrating Odoo ERP with MPESA by
+interpreting message to payment and auto reconciling unpaid invoices with the
+payment transaction.
+
+
+It can work offline or online and does not need complex APIs integration for it
+to work. It use PlaySMS, Odoo, Freeradius and Mikrotik API.
+
+* ISP management
+
+** Model
+#+begin_src mermaid :file assets/models.png
+  erDiagram
+    Packages }|--|| Gateways : Uses
+    Packages }|--|| BillingCycle : isPartOf
+    Packages ||--|{ PackagesSetupitems : has
+    Packages{
+      string title
+      string description
+      ip gateway_id
+      string billing_cycle_id
+      string currency_id
+      string speed
+      string speed_type
+      int amount
+      bool published
+    }
+    PackagesSetupitems{
+      string title
+      string description
+      string package_id
+      string currency_id
+      int amount
+      bool published
+    }
+    Gateways{
+      string title
+      string username
+      string password
+      string database
+      ip ip_address
+      int port
+      string type
+      bool published
+      bool by_sql_file
+    }
+    Connections }|--|| Packages : isPartOf
+    Connections }|--|| Partner : isPartOf
+    Connections }|--|| Invoice : hasRecieved
+    Connections ||--|{ ConnectionsInvoice : issued
+    Connections ||--|{ ConnectionsSetupItems : has
+    Connections{
+      string username
+      string password
+      date expiry_date
+      date billing_date
+      text params
+      bool is_setup
+      bool is_paid
+      Selection status
+    }
+    ConnectionsInvoice{
+      connection_id
+      invoice_id
+    }
+    ConnectionsSetupItems{
+      string title
+      text description
+      Many2one connection_id
+      Many2one currency
+      int amount
+    }
+    Billing }|--|| Connections : hasConnection
+    Billing }|--|| AccountInvoice : hasBeenInvoiced
+    Billing ||--|{ BillingItems : has
+    Billing{
+      Many2one connection_id
+      Many2one invoice_id
+      string title
+      text description
+      date start_date
+      date end_date
+      bool is_paid
+      One2Many billing_items_id
+    }
+    BillingCycle{
+      string title
+      text description
+      int duration
+      selection duration_type
+      bool published
+    }
+    BillingItems{
+      string title
+      text description
+      Many2One billing_id
+      Many2One currency_id
+      int amount
+    }
+
+#+end_src
+
+#+RESULTS:
+[[file:model.png]]
