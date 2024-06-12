@@ -1,7 +1,7 @@
 <odoo>
     <data>
 
-      <record id="mybizna_isp.prepare_billing" model="ir.cron">
+      <record id="mybizna_isp_prepare_billing" model="ir.cron">
         <field name="name">Mybizna Process Billing</field>
         <field name="model_id" ref="model_mybizna_isp_connections"/>
         <field name="user_id" ref="base.user_root"/>
@@ -14,8 +14,8 @@
         <field name="doall">False</field>
         <field name="active">True</field>
       </record>
-    
-      <record id="mybizna_isp.process_all_connections" model="ir.cron">
+
+      <record id="mybizna_isp_process_all_connections" model="ir.cron">
         <field name="name">Mybizna Process New Connection</field>
         <field name="model_id" ref="model_mybizna_isp_connections"/>
         <field name="user_id" ref="base.user_root"/>
@@ -28,8 +28,8 @@
         <field name="doall">False</field>
         <field name="active">True</field>
       </record>
-    
-      <record id="mybizna_isp.process_new_connections" model="ir.cron">
+
+      <record id="mybizna_isp_process_new_connections" model="ir.cron">
         <field name="name">Mybizna Process All Connection</field>
         <field name="model_id" ref="model_mybizna_isp_connections"/>
         <field name="user_id" ref="base.user_root"/>
@@ -42,8 +42,8 @@
         <field name="doall">False</field>
         <field name="active">True</field>
       </record>
-    
-      <record id="mybizna_isp.process_expiry" model="ir.cron">
+
+      <record id="mybizna_isp_process_expiry" model="ir.cron">
         <field name="name">Mybizna Process Expiry</field>
         <field name="model_id" ref="model_mybizna_isp_connections"/>
         <field name="user_id" ref="base.user_root"/>
@@ -57,8 +57,8 @@
         <field name="active">True</field>
       </record>
 
-    
-      <record id="mybizna_isp.process_expiry" model="ir.cron">
+
+      <record id="mybizna_isp_process_expiry" model="ir.cron">
         <field name="name">Mybizna Generate Invoices</field>
         <field name="model_id" ref="model_mybizna_isp_billing"/>
         <field name="user_id" ref="base.user_root"/>
@@ -72,8 +72,8 @@
         <field name="active">True</field>
       </record>
 
-    
-      <record id="mybizna_isp.process_expiry" model="ir.cron">
+
+      <record id="mybizna_isp_process_expiry" model="ir.cron">
         <field name="name">Mybizna Update Packages</field>
         <field name="model_id" ref="model_mybizna_isp_billing"/>
         <field name="user_id" ref="base.user_root"/>

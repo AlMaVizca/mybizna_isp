@@ -14,12 +14,13 @@
     'website': "http://www.mybizna.com",
 
     # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/13.0/odoo/addons/base/data/ir_module_category_data.xml
+    # Check https://github.com/odoo/odoo/blob/17.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Accounts',
+    'category': 'Accounting',
 
     # any module necessary for this one to work correctly
     'depends': ['base', 'account'],
+    'external_dependencies': {'python': ['mysql']},
 
     'images': ['static/images/banner.png', 'static/description/icon.png',  'static/images/thubmnail1.png'],
 
@@ -35,7 +36,7 @@
         'views/packages_setupitems_view.xml',
         'views/packages_view.xml',
         'demo/demo.xml',
-        'demo/cron.xml',
+        'data/cron.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

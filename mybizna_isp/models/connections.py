@@ -332,7 +332,7 @@ class Connections(models.Model):
 
                     _logger = logging.getLogger(__name__)
                     _logger.error(r.content)
-                
+
             else:
 
                 db = mysql.connect(
