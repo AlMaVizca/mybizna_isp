@@ -9,7 +9,7 @@
     'description': """
         Internet Service Provider App for managing connections.
     """,
-
+    'license': "GPL-3",
     'author': "Mybizna",
     'website': "http://www.mybizna.com",
 
